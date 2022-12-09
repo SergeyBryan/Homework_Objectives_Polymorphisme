@@ -1,6 +1,16 @@
 public class TruckCar  extends  Car implements Competing{
-    public TruckCar(String brand, String name, float engineVolume) {
+    private Weight weight;
+    public TruckCar(String brand, String name, float engineVolume, Weight weight) {
         super(brand, name, engineVolume);
+        this.weight = weight;
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Weight weight) {
+        this.weight = weight;
     }
 
     @Override
@@ -36,5 +46,17 @@ public class TruckCar  extends  Car implements Competing{
     @Override
     protected void endMove() {
         System.out.println("Грузовая машина " + getBrand() +" "+getModel()+ " заканчивает движение");
+    }
+
+    @Override
+    protected void printAuto() {
+        if (weight == null) {
+            System.out.println("Данных по авто недостаточно");
+        } else {
+            String from = weight.getFrom()==null? "" : " от" + weight.getFrom() + " ";
+            String to = weight.getTo()==null? "" : "до" + weight.getTo();
+            System.out.println("Вес автомобиля " + from + to);
+        }
+
     }
 }

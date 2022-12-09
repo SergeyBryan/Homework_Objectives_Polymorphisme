@@ -2,7 +2,6 @@
 import java.util.Objects;
 
 public abstract class Car {
-
     protected String brand;
     protected String model;
     protected float engineVolume;
@@ -72,5 +71,6 @@ public abstract class Car {
     protected abstract void startMove();
 
     protected abstract void endMove();
+    protected abstract void printAuto();
 
 }
