@@ -1,22 +1,22 @@
 public class Main {
     public static void main(String[] args) {
         Bus[] buses = {
-                new Bus("Liaz", "2013", 2.5f),
-                new Bus("Liaz", "2015", 3.5f),
-                new Bus("Liaz", "2021", 4.5f),
-                new Bus("Liaz", "2022", 5.5f)};
+                new Bus("Liaz", "2013", 2.5f,Capacity.LARGE),
+                new Bus("Liaz", "2015", 3.5f,Capacity.MEDIUM),
+                new Bus("Liaz", "2021", 4.5f,Capacity.EXTRASMALL),
+                new Bus("Liaz", "2022", 5.5f,Capacity.SMALL)};
 
         PassengerCar[] passengerCars = {
-                new PassengerCar("Audi", "A8", 4f),
-                new PassengerCar("BMW", "X6", 3f),
-                new PassengerCar("Mercedes", "GLE", 2.9f),
-                new PassengerCar("Volkswagen", "Polo", 1.6f)
+                new PassengerCar("Audi", "A8", 4f, TypeOfBody.SEDAN),
+                new PassengerCar("BMW", "X6", 3f, TypeOfBody.HATCHBACK),
+                new PassengerCar("Mercedes", "GLE", 2.9f, TypeOfBody.CROSSOVER),
+                new PassengerCar("Volkswagen", "Polo", 1.6f, TypeOfBody.VAN)
         };
         TruckCar[] truckCars = {
-                new TruckCar("Volvo", "D12", 12.1f),
-                new TruckCar("Ford", "F150", 3.3f),
-                new TruckCar("Ford", "Transit", 3.5f),
-                new TruckCar("Chevrolet", "Express", 2.2f)
+                new TruckCar("Volvo", "D12", 12.1f,Weight.N1),
+                new TruckCar("Ford", "F150", 3.3f,Weight.N2),
+                new TruckCar("Ford", "Transit", 3.5f,Weight.N3),
+                new TruckCar("Chevrolet", "Express", 2.2f,Weight.N2)
         };
         for (int i = 0; i < buses.length; i++) {
             buses[i].startMove();
@@ -52,6 +52,10 @@ public class Main {
         c1.drive(truckCars[2]);
         b1.drive(passengerCars[3]);
         d1.drive(buses[0]);
+        truckCars[0].printAuto();
+        buses[0].printAuto();
+        passengerCars[0].printAuto();
+
     }
 
 

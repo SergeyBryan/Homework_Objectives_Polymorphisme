@@ -1,13 +1,25 @@
 public class PassengerCar extends Car implements Competing {
-    public PassengerCar(String brand, String model, float engineVolume) {
+    private TypeOfBody typeOfBody;
+
+    public PassengerCar(String brand, String model, float engineVolume, TypeOfBody typeOfBody) {
         super(brand, model, engineVolume);
+        this.typeOfBody = typeOfBody;
     }
 
+    public TypeOfBody getTypeOfBody() {
+        return typeOfBody;
+    }
+
+    public void setTypeOfBody(TypeOfBody typeOfBody) {
+        this.typeOfBody = typeOfBody;
+    }
 
     @Override
     public void pitStop() {
         System.out.println("Легковая машина " + " " + getBrand() + " " + getModel() + " делает Пит-Стоп");
     }
+
+
 
     @Override
     public void bestLapTime() {
@@ -37,5 +49,15 @@ public class PassengerCar extends Car implements Competing {
     @Override
     protected void endMove() {
         System.out.println("Легковая машина " + getBrand() + " " + getModel() + " заканчивает движение");
+    }
+
+    @Override
+    protected void printAuto() {
+        if (typeOfBody == null) {
+            System.out.println("Данных по авто недостаточно");
+        } else {
+            System.out.println("Тип авто "+ typeOfBody);
+        }
+
     }
 }
