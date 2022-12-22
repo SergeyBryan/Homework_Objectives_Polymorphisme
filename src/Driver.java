@@ -1,22 +1,26 @@
-import java.util.Objects;
-
-public abstract class Driver {
+public abstract class Driver<T extends Car> {
     private String name;
-    private boolean isDriverLicense;
-    private int driverExperience;
+    private String drivingLicense;
+    private int experience;
+    private T car;
 
-    public Driver(String name, int driverExperience, boolean isDriverLicense) {
+    public Driver(String name, int driverExperience, String drivingLicense, T car) {
         if (name == null) {
             this.name = "не указано";
         } else {
             this.name = name;
         }
         if (driverExperience < 0) {
-            this.driverExperience = 0;
+            this.experience = 0;
         } else {
-            this.driverExperience = driverExperience;
+            this.experience = driverExperience;
         }
-        this.isDriverLicense = isDriverLicense;
+        if (drivingLicense == null || drivingLicense.isEmpty() || drivingLicense.isBlank()) {
+            this.drivingLicense = "Не указано";
+        } else {
+            this.drivingLicense = drivingLicense;
+        }
+        this.car = car;
     }
 
     public String getName() {
@@ -27,45 +31,45 @@ public abstract class Driver {
         this.name = name;
     }
 
-    public boolean isDriverLicense() {
-        return isDriverLicense;
+    public String getDrivingLicense() {
+        return drivingLicense;
     }
 
-    public void setDriverLicense(boolean driverLicense) {
-        isDriverLicense = driverLicense;
+    public void setDrivingLicense(String drivingLicense) {
+        this.drivingLicense = drivingLicense;
     }
 
-    public int getDriverExperience() {
-        return driverExperience;
+    public int getExperience() {
+        return experience;
     }
 
-    public void setDriverExperience(int driverExperience) {
-        this.driverExperience = driverExperience;
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 
     @Override
     public String toString() {
         return "Водитель " +
-                name + '\'' +
-                ", с лицензией: " + ((isDriverLicense) ? "Да" : "нет") +
-                ", водительский стаж " + driverExperience + " лет.";
+                getName() + '\'' +
+                ", с лицензией: " + getDrivingLicense() +
+                ", водительский стаж " + getExperience() + " лет.";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Driver driver = (Driver) o;
-        return isDriverLicense == driver.isDriverLicense && driverExperience == driver.driverExperience && Objects.equals(name, driver.name);
+    public void drive(T car) {
+        System.out.println(getName() + " сел за руль " + car.toString() + " и будет участвовать в заезде.");
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, isDriverLicense, driverExperience);
+
+    public void startMove() {
+        System.out.println(getName() + " начал движение на транспорте " + car.getBrand() + " " + car.getModel());
     }
 
-    protected abstract void startMove();
-    protected abstract void stop();
+    public void stop() {
+        System.out.println(getName() + " совершает остановку на транспорте " + car.getBrand() + " " + car.getModel());
+    }
 
-    protected abstract void refuel();
+    public void refuel() {
+        System.out.println(getName() + " начал заправлять " + car.getBrand() + " " + car.getModel());
+    }
+
 }

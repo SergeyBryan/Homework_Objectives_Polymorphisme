@@ -40,9 +40,9 @@ public class Main {
             truckCars[i].bestLapTime();
             truckCars[i].maxSpeed();
         }
-        DriverB b1 = new DriverB("Горелов Василий Петрович", 2, true);
-        DriverC c1 = new DriverC("Мамедов Иван Васильевич", 5, true);
-        DriverD d1 = new DriverD("Королев Игорь Владиславович", 11, true);
+        DriverB b1 = new DriverB("Горелов Василий Петрович", 2, passengerCars[0]);
+        DriverC c1 = new DriverC("Мамедов Иван Васильевич", 5, truckCars[2]);
+        DriverD d1 = new DriverD("Королев Игорь Владиславович", 11, buses[2]);
         System.out.println(b1.toString());
         System.out.println(c1.toString());
         System.out.println(d1.toString());
@@ -51,7 +51,7 @@ public class Main {
         d1.refuel();
         c1.drive(truckCars[2]);
         b1.drive(passengerCars[3]);
-        d1.drive(buses[0]);
+        System.out.println(passengerCars[0].getBrand());
     }
 
 

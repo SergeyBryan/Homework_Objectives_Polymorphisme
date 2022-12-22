@@ -7,9 +7,9 @@ public class Bus extends Car implements Competing {
     @Override
     public String toString() {
         return "Автобус " +
-                "бренд = " + brand  +
-                ", модель = " + model  +
-                ", объем двигателя = " + engineVolume;
+                "бренд = " + getBrand()  +
+                ", модель = " + getModel()  +
+                ", объем двигателя = " + getEngineVolume();
     }
 
     @Override

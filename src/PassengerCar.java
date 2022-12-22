@@ -24,9 +24,9 @@ public class PassengerCar extends Car implements Competing {
     @Override
     public String toString() {
         return "Легковой автомобиль " +
-                "бренд = " + brand  +
-                ", модель = " + model  +
-                ", объем двигателя = " + engineVolume;
+                "бренд = " + getBrand() +
+                ", модель = " + getModel() +
+                ", объем двигателя = " + getEngineVolume();
     }
 
     @Override
