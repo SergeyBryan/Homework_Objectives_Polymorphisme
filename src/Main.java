@@ -1,3 +1,5 @@
+import Data.Data;
+
 public class Main {
     public static void main(String[] args) {
         Bus[] buses = {
@@ -52,7 +54,16 @@ public class Main {
         c1.drive(truckCars[2]);
         b1.drive(passengerCars[3]);
         System.out.println(passengerCars[0].getBrand());
+        System.out.println();
+        System.out.println(Data.che("sfs", "fafa", "fafa"));
+        for (int i = 0; i < passengerCars.length ; i++) {
+            passengerCars[i].diagnostic();
+        }
+        for (int i = 0; i < truckCars.length ; i++) {
+            truckCars[i].diagnostic();
+        }
+        for (int i = 0; i < buses.length ; i++) {
+            buses[i].diagnostic();
+        }
     }
-
-
 }

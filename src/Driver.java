@@ -36,6 +36,9 @@ public abstract class Driver<T extends Car> {
     }
 
     public void setDrivingLicense(String drivingLicense) {
+        if (drivingLicense == null || drivingLicense.isBlank() || drivingLicense.isEmpty()) {
+            throw new IllegalArgumentException("У водителя должна быть категория прав");
+        }
         this.drivingLicense = drivingLicense;
     }
 
@@ -71,5 +74,6 @@ public abstract class Driver<T extends Car> {
     public void refuel() {
         System.out.println(getName() + " начал заправлять " + car.getBrand() + " " + car.getModel());
     }
+
 
 }

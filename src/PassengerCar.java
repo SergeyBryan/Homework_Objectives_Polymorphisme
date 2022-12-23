@@ -38,4 +38,15 @@ public class PassengerCar extends Car implements Competing {
     protected void endMove() {
         System.out.println("Легковая машина " + getBrand() + " " + getModel() + " заканчивает движение");
     }
+
+    @Override
+    protected void diagnostic() {
+        if (Math.random() < 0.75) {
+            try {
+                throw new RuntimeException("Автомобиль " + getBrand() + " " + getModel() + " диагностику не прошёл");
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }

@@ -37,4 +37,15 @@ public class TruckCar extends Car implements Competing {
     protected void endMove() {
         System.out.println("Грузовая машина " + getBrand() + " " + getModel() + " заканчивает движение");
     }
+
+    @Override
+    protected void diagnostic() {
+        if (Math.random() < 0.7) {
+            try {
+                throw new RuntimeException("Грузовой автомобиль " + getBrand() + " " + getModel() + " диагностику не прошёл");
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }

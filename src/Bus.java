@@ -39,4 +39,11 @@ public class Bus extends Car implements Competing {
     protected void endMove() {
         System.out.println(getBrand() + " " + getModel() + " заканчивает движение");
     }
+
+
+    protected void diagnostic() {
+
+            System.out.println("Автобусу " + getBrand() + getModel() + " диагностика не требуется");
+
+    }
 }

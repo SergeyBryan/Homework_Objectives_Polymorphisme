@@ -73,5 +73,7 @@ public abstract class Car {
 
     protected abstract void endMove();
 
+    protected abstract void diagnostic();
+
 
 }
