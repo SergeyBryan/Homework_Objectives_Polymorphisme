@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+
 public abstract class Driver<T extends Car> {
     private String name;
     private String drivingLicense;
     private int experience;
     private T car;
+    private final ArrayList<Driver<?>> drivers = new ArrayList();
 
-    public Driver(String name, int driverExperience, String drivingLicense, T car) {
+    public Driver(String name, int driverExperience, String drivingLicense) {
         if (name == null) {
             this.name = "не указано";
         } else {
@@ -20,9 +23,11 @@ public abstract class Driver<T extends Car> {
         } else {
             this.drivingLicense = drivingLicense;
         }
-        this.car = car;
     }
 
+    public void addDriver(Driver<?> driver) {
+        drivers.add(driver);
+    }
     public String getName() {
         return name;
     }
@@ -75,5 +80,8 @@ public abstract class Driver<T extends Car> {
         System.out.println(getName() + " начал заправлять " + car.getBrand() + " " + car.getModel());
     }
 
+    public ArrayList<Driver<?>> getDrivers() {
+        return drivers;
+    }
 
 }

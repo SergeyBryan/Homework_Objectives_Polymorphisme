@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Car {
@@ -6,9 +9,12 @@ public abstract class Car {
     private String brand;
     private String model;
     private float engineVolume;
+    private final List<Driver<?>> drivers = new ArrayList<>();
+    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final List<Sponsor> sponsors = new ArrayList<>();
 
 
-    protected Car(String brand, String model, float engineVolume) {
+    public Car(String brand, String model, float engineVolume) {
 
         if (engineVolume <= 0) {
             this.engineVolume = 1.5f;
@@ -50,7 +56,15 @@ public abstract class Car {
     protected final void setEngineVolume(float engineVolume) {
         this.engineVolume = engineVolume;
     }
-
+    public void addDriver(Driver<?>... drivers) {
+        this.drivers.addAll(Arrays.asList(drivers));
+    }
+    public void addMechanic(Mechanic<?>... mechanics) {
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+    public void addSponsor(Sponsor... sponsors) {
+        this.sponsors.addAll(Arrays.asList(sponsors));
+    }
     @Override
     public String toString() {
         return "Car{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", engineVolume=" + engineVolume + '}';
@@ -75,5 +89,17 @@ public abstract class Car {
 
     protected abstract void diagnostic();
 
+    public List<Driver<?>> getDrivers() {
+        return drivers;
+    }
 
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    public abstract void repair();
 }
