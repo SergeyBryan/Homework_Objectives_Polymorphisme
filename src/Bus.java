@@ -7,9 +7,9 @@ public class Bus extends Car implements Competing {
     @Override
     public String toString() {
         return "Автобус " +
-                "бренд = " + brand  +
-                ", модель = " + model  +
-                ", объем двигателя = " + engineVolume;
+                "бренд = " + getBrand()  +
+                ", модель = " + getModel()  +
+                ", объем двигателя = " + getEngineVolume();
     }
 
     @Override
@@ -38,5 +38,17 @@ public class Bus extends Car implements Competing {
     @Override
     protected void endMove() {
         System.out.println(getBrand() + " " + getModel() + " заканчивает движение");
+    }
+
+
+    protected void diagnostic() {
+
+            System.out.println("Автобусу " + getBrand() + getModel() + " диагностика не требуется");
+
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("Машина " + getBrand() +" " + getModel() + " починена");
     }
 }

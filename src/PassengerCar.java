@@ -1,4 +1,5 @@
 public class PassengerCar extends Car implements Competing {
+
     public PassengerCar(String brand, String model, float engineVolume) {
         super(brand, model, engineVolume);
     }
@@ -24,9 +25,9 @@ public class PassengerCar extends Car implements Competing {
     @Override
     public String toString() {
         return "Легковой автомобиль " +
-                "бренд = " + brand  +
-                ", модель = " + model  +
-                ", объем двигателя = " + engineVolume;
+                "бренд = " + getBrand() +
+                ", модель = " + getModel() +
+                ", объем двигателя = " + getEngineVolume();
     }
 
     @Override
@@ -37,5 +38,21 @@ public class PassengerCar extends Car implements Competing {
     @Override
     protected void endMove() {
         System.out.println("Легковая машина " + getBrand() + " " + getModel() + " заканчивает движение");
+    }
+
+    @Override
+    protected void diagnostic() {
+        if (Math.random() < 0.75) {
+            try {
+                throw new RuntimeException("Автомобиль " + getBrand() + " " + getModel() + " диагностику не прошёл");
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " починен");
     }
 }
