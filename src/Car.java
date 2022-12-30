@@ -3,9 +3,9 @@ import java.util.Objects;
 
 public abstract class Car {
 
-    protected String brand;
-    protected String model;
-    protected float engineVolume;
+    private String brand;
+    private String model;
+    private float engineVolume;
 
 
     protected Car(String brand, String model, float engineVolume) {
@@ -72,5 +72,8 @@ public abstract class Car {
     protected abstract void startMove();
 
     protected abstract void endMove();
+
+    protected abstract void diagnostic();
+
 
 }
