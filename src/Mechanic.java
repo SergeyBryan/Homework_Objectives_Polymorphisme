@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Mechanic<E extends Car> {
     private String firstName;
@@ -43,5 +44,24 @@ public class Mechanic<E extends Car> {
         e.diagnostic();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return Objects.equals(firstName, mechanic.firstName) && Objects.equals(lastName, mechanic.lastName) && Objects.equals(company, mechanic.company);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, company);
+    }
+
+    @Override
+    public String toString() {
+        return "Механик " +
+                firstName +
+                " " + lastName  +
+                ", из компании " + company;
+    }
 }

@@ -58,7 +58,7 @@ public abstract class Driver<T extends Car> {
     @Override
     public String toString() {
         return "Водитель " +
-                getName() + '\'' +
+                getName()  +
                 ", с лицензией: " + getDrivingLicense() +
                 ", водительский стаж " + getExperience() + " лет.";
     }

@@ -25,4 +25,10 @@ public class Sponsor {
         return sponsors;
     }
 
+    @Override
+    public String toString() {
+        return "Спонсор " +
+                 name  +
+                ", спонсируемые деньги " + money;
+    }
 }

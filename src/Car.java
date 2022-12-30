@@ -1,18 +1,29 @@
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class Car {
 
     private String brand;
     private String model;
     private float engineVolume;
-    private final List<Driver<?>> drivers = new ArrayList<>();
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
-    private final List<Sponsor> sponsors = new ArrayList<>();
+//    private final List<Driver<?>> drivers = new ArrayList<>();
+    private final Set<Driver<?>> drivers = new HashSet<>();
+//    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
+//    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
+    public Set<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public Set<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public Set<Sponsor> getSponsors() {
+        return sponsors;
+    }
 
     public Car(String brand, String model, float engineVolume) {
 
@@ -67,7 +78,7 @@ public abstract class Car {
     }
     @Override
     public String toString() {
-        return "Car{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", engineVolume=" + engineVolume + '}';
+        return "Car{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", engineVolume=" + engineVolume;
     }
 
     @Override
@@ -88,18 +99,6 @@ public abstract class Car {
     protected abstract void endMove();
 
     protected abstract void diagnostic();
-
-    public List<Driver<?>> getDrivers() {
-        return drivers;
-    }
-
-    public List<Mechanic<?>> getMechanics() {
-        return mechanics;
-    }
-
-    public List<Sponsor> getSponsors() {
-        return sponsors;
-    }
 
     public abstract void repair();
 }
