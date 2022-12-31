@@ -1,4 +1,5 @@
 public class PassengerCar extends Car implements Competing {
+
     public PassengerCar(String brand, String model, float engineVolume) {
         super(brand, model, engineVolume);
     }
@@ -48,5 +49,10 @@ public class PassengerCar extends Car implements Competing {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " починен");
     }
 }

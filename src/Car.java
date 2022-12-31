@@ -1,14 +1,31 @@
 
-import java.util.Objects;
+import java.util.*;
 
 public abstract class Car {
 
     private String brand;
     private String model;
     private float engineVolume;
+//    private final List<Driver<?>> drivers = new ArrayList<>();
+    private final Set<Driver<?>> drivers = new HashSet<>();
+//    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
+//    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
+    public Set<Driver<?>> getDrivers() {
+        return drivers;
+    }
 
-    protected Car(String brand, String model, float engineVolume) {
+    public Set<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public Set<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    public Car(String brand, String model, float engineVolume) {
 
         if (engineVolume <= 0) {
             this.engineVolume = 1.5f;
@@ -50,10 +67,18 @@ public abstract class Car {
     protected final void setEngineVolume(float engineVolume) {
         this.engineVolume = engineVolume;
     }
-
+    public void addDriver(Driver<?>... drivers) {
+        this.drivers.addAll(Arrays.asList(drivers));
+    }
+    public void addMechanic(Mechanic<?>... mechanics) {
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+    public void addSponsor(Sponsor... sponsors) {
+        this.sponsors.addAll(Arrays.asList(sponsors));
+    }
     @Override
     public String toString() {
-        return "Car{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", engineVolume=" + engineVolume + '}';
+        return "Car{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", engineVolume=" + engineVolume;
     }
 
     @Override
@@ -75,5 +100,5 @@ public abstract class Car {
 
     protected abstract void diagnostic();
 
-
+    public abstract void repair();
 }

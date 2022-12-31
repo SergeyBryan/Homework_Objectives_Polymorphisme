@@ -48,4 +48,9 @@ public class TruckCar extends Car implements Competing {
             }
         }
     }
+
+    @Override
+    public void repair() {
+        System.out.println("Грузовик "+ getBrand() + " " + getModel() + " починен");
+    }
 }
